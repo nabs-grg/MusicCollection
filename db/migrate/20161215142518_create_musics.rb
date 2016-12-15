@@ -5,7 +5,7 @@ class CreateMusics < ActiveRecord::Migration[5.0]
       t.string :track
       t.string :artist
       t.string :genre
-      t.string :released_year
+      t.number :released_year
 
       t.timestamps
     end
