@@ -2,7 +2,7 @@
 	<%= f.input :album, lablel: "Album Title"%>
 	<%= f.input :track%>
 	<%= f.input :artist%>
-	<%= f.input :genre%>
 	<%= f.input :released_year%>
+	<%= select_tag(:genre_id, options_for_select(@genre), :prompt => "Select a genre") %>
 	<%= f.button :submit%>
 <% end %>

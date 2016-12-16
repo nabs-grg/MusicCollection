@@ -1,2 +1,11 @@
 <h1>Edit Book</h1>
-<%= render 'form' %>
+<%#= render 'form' %> 
+
+<%= simple_form_for @music, :html => { :multipart => true } do |f| %>
+	<%= f.input :album, lablel: "Album Title"%>
+	<%= f.input :track%>
+	<%= f.input :artist%>
+	<%= f.input :released_year%>
+	<%= f.select :genre_id, @genre %>
+	<%= f.button :submit %>
+<% end %>

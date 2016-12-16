@@ -1,9 +1,18 @@
 <h2><%= @music.album %></h2>
 <h3><%= @music.track %></h3>
 <h3><%= @music.artist %></h3>
-<h3><%= @music.genre %></h3>
+<h3><%= @music.genre.name %></h3>
 <h3><%= @music.released_year %></h3>
 
 <%= link_to "Back", root_path%>
+<!-- check if a user is signed in or not so that when no users are signed than the current users has no value and wont be anle to call any method or attribute  -->
+<% if user_signed_in? %>
+
+<% if @music.user_id == current_user.id %>
+
 <%= link_to "Edit", edit_music_path(@music) %>
 <%= link_to "Delete", music_path(@music), method: :delete, data: { confirm: "Are you sure you want to delete the data?" }%>
+
+<% end %>
+
+<% end %>

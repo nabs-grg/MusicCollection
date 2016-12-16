@@ -11,24 +11,35 @@ class MusicsController < ApplicationController
 		#we still have find music to show the music
 	end
 
+	#update the new and create action and since its only creating a standalone music without any association
 	def new
-		@music = Music.new
+		#@music = Music.new
+		#now its creating the music from the current user by the build method
+		@music = current_user.musics.build
+		#access genre when creating new Music
+		@genre = Genre.all.map{ |g| [g.name, g.id]}
 	end
 
 	def create
-		@music = Music.new(music_params)
+		#@music = Music.new(music_params)
+		@music = current_user.musics.build(music_params)
+		#the category of the music genre is associated with newly created music
+		@music.genre_id = params[:genre_id]
+
 		if @music.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
+      		redirect_to root_path
+   		else
+      		render 'new'
+    	end
 	end
     #display edit view with the form to edit with what the user already has so when the form is submiited again the user will be chaning the value of book params
     def edit
-
+    	#mapping the genre so that when the form is in edit mode then ahve access to all the genre
+    	@genre = Genre.all.map{ |g| [g.name, g.id]}
     end
 
     def update
+    	@music.genre_id = params[:genre_id]
     	#check if book is updated successfully and changing the value of the music params and pass in the music-params so that the music is updating with the new inforamtion
     	if @music.update(music_params)
     		#with respect to @music instance variable we have
@@ -50,7 +61,7 @@ end
 		#when a user fills in the inforamtion and sends a request, its going to be passed with the information the user filled out in a form.
 		#define the params and the params to able to sue
 		def music_params
-			params.require(:music).permit(:album, :track, :artist, :genre, :released_year)
+			params.require(:music).permit(:album, :track, :artist, :released_year, :genre_id)
 		end
 
 		#refactor and define a metho called find music
