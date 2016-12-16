@@ -22,7 +22,7 @@ class MusicsController < ApplicationController
     else
       render 'new'
     end
-
+	end
     #display edit view with the form to edit with what the user already has so when the form is submiited again the user will be chaning the value of book params
     def edit
 
@@ -40,6 +40,8 @@ class MusicsController < ApplicationController
     end
 
     def destroy
+    	@music.destroy
+    	redirect_to root_path
     end
 
 end
@@ -57,4 +59,4 @@ end
 			@music = Music.find(params[:id])
 		end
 
-end
+
