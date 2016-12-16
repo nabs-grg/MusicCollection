@@ -3,7 +3,14 @@ class MusicsController < ApplicationController
 	before_action :find_music, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@musics = Music.all.order("created_at DESC")
+		#check if the params is filled with one of the genre or not and show the music collection according to the selected genre
+		if params[:genre].blank?
+			@musics = Music.all.order("created_at DESC")
+		else
+			#finding the name that is passed into the params and getting the information of the genre_id passed in the Genre
+			@genre_id = Genre.find_by(name: params[:genre]).id
+			@musics = Music.where(:genre_id => @genre_id).order("created_at DESC")
+		end
 	end
 	#to show the music we need  to first find the music
 	#not to repeat our self DRY code since we will be using show action  to find the music and then when we add or edit or update and destroy functionality (we will also be finding music there to)
