@@ -7,5 +7,6 @@
 	<%= f.input :artist%>
 	<%= f.input :released_year%>
 	<%= f.select :genre_id, @genre %>
+	<%= f.file_field :music_album_img %> 
 	<%= f.button :submit %>
 <% end %>

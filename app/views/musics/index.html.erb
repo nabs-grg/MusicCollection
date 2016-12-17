@@ -5,7 +5,10 @@
 	<% else %>
 		<% @musics.each  do |music| %>
 <!-- show page is in respect with one muisc therefore can't jsut vist show page -->
-		<h2><%= link_to music.album, music_path(music) %></h2>
+		<a href="/musics/<%= music.id %>" >
+		<%= image_tag music.music_album_img.url(:music_index) %>
+
+		</a>
 	<% end %>
 <!-- link to tag is eqivalent to anchor tag in rails , second part is equivalent to href-->
 <% end %>

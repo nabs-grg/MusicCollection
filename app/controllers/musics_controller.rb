@@ -68,7 +68,7 @@ end
 		#when a user fills in the inforamtion and sends a request, its going to be passed with the information the user filled out in a form.
 		#define the params and the params to able to sue
 		def music_params
-			params.require(:music).permit(:album, :track, :artist, :released_year, :genre_id)
+			params.require(:music).permit(:album, :track, :artist, :released_year, :genre_id, :music_album_img)
 		end
 
 		#refactor and define a metho called find music

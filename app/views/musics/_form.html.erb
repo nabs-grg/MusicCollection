@@ -4,5 +4,6 @@
 	<%= f.input :artist%>
 	<%= f.input :released_year%>
 	<%= select_tag(:genre_id, options_for_select(@genre), :prompt => "Select a genre") %>
+	<%= f.file_field :music_album_img %> 
 	<%= f.button :submit%>
 <% end %>
