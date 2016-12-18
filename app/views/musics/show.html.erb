@@ -18,6 +18,11 @@
 
 	<div class="col-md-4">
 	<!-- Where the notes/ratings will be placed -->
+		<%= render @music.reviews%>
+
+		<div>
+		<%= link_to "Add Review", new_music_review_path(@music)%>
+		</div>
 	</div>
 
 </div>

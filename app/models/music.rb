@@ -1,6 +1,7 @@
 class Music < ApplicationRecord
 	belongs_to :user
 	belongs_to :genre
+	has_many :reviews
 	
 	validates_presence_of :album, :track, :artist, :released_year
 
