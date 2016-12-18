@@ -3,12 +3,16 @@
 	<% if @musics.count == 0 %>
 		<h1>There are no muisc collection for this Genre!</h1>
 	<% else %>
+	<div class="row">
 		<% @musics.each  do |music| %>
+		<div class="col-md-3">
 <!-- show page is in respect with one muisc therefore can't jsut vist show page -->
-		<a href="/musics/<%= music.id %>" >
-		<%= image_tag music.music_album_img.url(:music_index) %>
+			<a href="/musics/<%= music.id %>" >
+			<%= image_tag music.music_album_img.url(:music_index) , class: "music_img" %>
 
 		</a>
+		</div>
 	<% end %>
+	</div>
 <!-- link to tag is eqivalent to anchor tag in rails , second part is equivalent to href-->
 <% end %>

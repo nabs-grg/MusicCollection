@@ -24,7 +24,7 @@ class MusicsController < ApplicationController
 		#now its creating the music from the current user by the build method
 		@music = current_user.musics.build
 		#access genre when creating new Music
-		@genre = Genre.all.map{ |g| [g.name, g.id]}
+		@genre = Genre.all.map{ |g| [g.name, g.id] }
 	end
 
 	def create
@@ -66,7 +66,7 @@ end
 
 	private 
 		#when a user fills in the inforamtion and sends a request, its going to be passed with the information the user filled out in a form.
-		#define the params and the params to able to sue
+		#define the params and the params to able to use
 		def music_params
 			params.require(:music).permit(:album, :track, :artist, :released_year, :genre_id, :music_album_img)
 		end
