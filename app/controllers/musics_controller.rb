@@ -16,6 +16,11 @@ class MusicsController < ApplicationController
 	#not to repeat our self DRY code since we will be using show action  to find the music and then when we add or edit or update and destroy functionality (we will also be finding music there to)
 	def show
 		#we still have find music to show the music
+		if @music.reviews.blank?
+			@average_review = 0
+		else
+			@average_review = @music.reviews.average(:rating).round(2)
+		end
 	end
 
 	#update the new and create action and since its only creating a standalone music without any association

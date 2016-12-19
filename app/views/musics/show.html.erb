@@ -10,6 +10,9 @@
 		<h3><%= @music.artist %></h3>
 		<h3><%= @music.genre.name %></h3>
 		<h3><%= @music.released_year %></h3>
+		<h2>Average Rating</h2>
+		<div class="average_review_rating" review_score= <%= @average_review %>></div>
+		<span>Based on <%= @music.reviews.count %> reviews</span>
 	</div>
 
 </div>
@@ -43,6 +46,16 @@
 
 <script>
 	$('.review_rating').raty({
+		readOnly: true,
+		score: function(){
+			return $(this).attr('review_score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+<script>
+	$('.average_review_rating').raty({
 		readOnly: true,
 		score: function(){
 			return $(this).attr('review_score');
