@@ -40,3 +40,13 @@
 	<% end %>
 
 <% end %>
+
+<script>
+	$('.review_rating').raty({
+		readOnly: true,
+		score: function(){
+			return $(this).attr('review_score');
+		},
+		path: '/assets/'
+	});
+</script>
