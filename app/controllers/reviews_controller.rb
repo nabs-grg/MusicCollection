@@ -31,6 +31,11 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@review.destroy
+		redirect_to music_path(@music)
+	end
+
 
 	private 
 
