@@ -1,6 +1,7 @@
 class MusicsController < ApplicationController
 	#before any of these action initicaited we are going to find our music and we only want to find the music for the following actions
 	before_action :find_music, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, only: [:new, :edit]
 
 	def index
 		#check if the params is filled with one of the genre or not and show the music collection according to the selected genre
