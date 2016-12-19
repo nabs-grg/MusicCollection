@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
 	before_action :find_music
+	before_action :find_review, only: [:edit, :update, :destroy]
 
 	def new
 		@review = Review.new
@@ -18,6 +19,19 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+
+		if @review.update(review_params)
+			redirect_to music_path(@music)
+		else
+			render 'new'
+		end
+	end
+
+
 	private 
 
 		def review_params
@@ -26,6 +40,10 @@ class ReviewsController < ApplicationController
 
 		def find_music
 			@music = Music.find(params[:music_id])
+		end
+
+		def find_review
+			@review = Review.find(params[:id])
 		end
 
 end
